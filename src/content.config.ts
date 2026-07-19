@@ -12,6 +12,9 @@ const blog = defineCollection({
     translationKey: z.string(),
     headerImage: z.string().optional(),
     draft: z.boolean().default(false),
+    // hidden: l'articolo può essere committato/pushato ma non viene generato
+    // affatto: nessuna pagina, escluso da liste, RSS e switch lingua.
+    hidden: z.boolean().default(false),
   }),
 });
 

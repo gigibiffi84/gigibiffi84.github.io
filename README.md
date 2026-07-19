@@ -8,7 +8,7 @@ Blog personale, migrato dal vecchio CMS Kirby ad [Astro](https://astro.build). B
 - `src/content/blog/en/*.md` — versioni inglesi (stesso `translationKey` = stesso articolo)
 - `public/images/<slug>/` — immagini e allegati originali di ogni articolo
 
-Ogni articolo ha frontmatter YAML: `title`, `description`, `date`, `tags`, `lang`, `translationKey`, `headerImage` (opzionale), `draft` (opzionale — i draft non compaiono in home né nel feed RSS, ma la pagina esiste).
+Ogni articolo ha frontmatter YAML: `title`, `description`, `date`, `tags`, `lang`, `translationKey`, `headerImage` (opzionale), `draft` (opzionale — i draft non compaiono in home né nel feed RSS, ma la pagina esiste), `hidden` (opzionale — l'articolo può stare nel repo ma **non viene generato affatto**: niente pagina, niente lista, niente RSS. Per abilitarlo, rimuovi `hidden: true` e fai push).
 
 ## Comandi
 

@@ -4,8 +4,8 @@ import Base from '../../../layouts/Base.astro';
 import ArticleChrome from '../../../components/ArticleChrome.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', (p) => p.data.lang === 'en');
-  const italian = await getCollection('blog', (p) => p.data.lang === 'it');
+  const posts = await getCollection('blog', (p) => p.data.lang === 'en' && !p.data.hidden);
+  const italian = await getCollection('blog', (p) => p.data.lang === 'it' && !p.data.hidden);
   return posts.map((post) => ({
     params: { slug: post.data.translationKey },
     props: {

@@ -4,9 +4,9 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import PostList from '../components/PostList.astro';
 
-const posts = (await getCollection('blog', (p) => p.data.lang === 'it' && !p.data.draft))
+const posts = (await getCollection('blog', (p) => p.data.lang === 'it' && !p.data.draft && !p.data.hidden))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const hasEnglish = (await getCollection('blog', (p) => p.data.lang === 'en' && !p.data.draft)).length > 0;
+const hasEnglish = (await getCollection('blog', (p) => p.data.lang === 'en' && !p.data.draft && !p.data.hidden)).length > 0;
 ---
 
 <Base title="Luigi Bifulco — Software Architect" description="Blog di Luigi Bifulco: sviluppo software, architettura e semplicità." lang="it" altUrl={hasEnglish ? '/en/' : undefined}>
