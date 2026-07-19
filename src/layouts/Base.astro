@@ -73,10 +73,14 @@ const homeUrl = lang === 'it' ? '/' : '/en/';
 
   * { box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
 
   body {
     margin: 0;
+    overflow-x: hidden;
     background: var(--bg);
     color: var(--fg);
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI',
@@ -127,6 +131,7 @@ const homeUrl = lang === 'it' ? '/' : '/en/';
     color: var(--muted);
     text-decoration: none;
     transition: color 0.25s ease;
+    padding: 0.4rem 0.15rem;
   }
   .nav-link:hover { color: var(--fg); text-decoration: none; }
   .lang-pill {
@@ -165,6 +170,13 @@ const homeUrl = lang === 'it' ? '/' : '/en/';
   article {
     font-size: 1.06rem;
     line-height: 1.75;
+    overflow-wrap: break-word;
+  }
+  article table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
   }
   article h2, article h3, article h4 {
     margin-top: 2.75rem;
@@ -234,4 +246,24 @@ const homeUrl = lang === 'it' ? '/' : '/en/';
     font-size: 0.8rem;
   }
   .footer-meta a { color: var(--faint); }
+
+  /* ——— mobile ——— */
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    header nav { padding: 0.65rem 1.1rem; }
+    .nav-right { gap: 0.9rem; }
+    main { padding: 0 1.1rem 4rem; }
+    article { font-size: 1rem; }
+    article pre {
+      padding: 0.9rem 1rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+    }
+    article blockquote {
+      font-size: 1.25rem;
+      margin: 2.25rem 0;
+    }
+    article img { border-radius: 10px; }
+    .footer-inner { padding: 2rem 1.1rem 2.75rem; }
+  }
 </style>
