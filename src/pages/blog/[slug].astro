@@ -1,0 +1,92 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', (p) => p.data.lang === 'it');
+  const english = await getCollection('blog', (p) => p.data.lang === 'en');
+  return posts.map((post) => ({
+    params: { slug: post.data.translationKey },
+    props: {
+      post,
+      hasTranslation: english.some((e) => e.data.translationKey === post.data.translationKey),
+    },
+  }));
+}
+
+const { post, hasTranslation } = Astro.props;
+const { Content } = await render(post);
+const fmt = new Intl.DateTimeFormat('it-IT', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Base
+  title={`${post.data.title} — Luigi Bifulco`}
+  description={post.data.description}
+  lang="it"
+  altUrl={hasTranslation ? `/en/blog/${post.data.translationKey}/` : undefined}
+>
+  <article>
+    <header class="post-header">
+      <p class="meta">
+        <time datetime={post.data.date.toISOString()}>{fmt.format(post.data.date)}</time>
+        {post.data.draft && <span class="draft">bozza</span>}
+      </p>
+      <h1>{post.data.title}</h1>
+      {post.data.description && <p class="subtitle">{post.data.description}</p>}
+    </header>
+    {post.data.headerImage && <img class="header-img" src={post.data.headerImage} alt="" />}
+    <Content />
+    {post.data.tags.length > 0 && (
+      <p class="tags">{post.data.tags.map((t) => <span>#{t}</span>)}</p>
+    )}
+    <p class="back"><a href="/">&lsaquo; Tutti gli articoli</a></p>
+  </article>
+</Base>
+
+<style>
+  .post-header {
+    padding: 4rem 0 1.5rem;
+  }
+  .post-header h1 {
+    margin: 0;
+    font-size: clamp(2.1rem, 6vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+  }
+  .subtitle {
+    margin: 1.1rem 0 0;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: var(--muted);
+  }
+  .meta {
+    margin: 0 0 1.1rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .draft {
+    margin-left: 0.6rem;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    padding: 0.1rem 0.55rem;
+    font-size: 0.7rem;
+  }
+  .header-img { margin-top: 0.5rem; }
+  .tags {
+    margin-top: 3rem;
+    color: var(--faint);
+    font-size: 0.9rem;
+  }
+  .tags span { margin-right: 0.7rem; }
+  .back {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.95rem;
+  }
+</style>

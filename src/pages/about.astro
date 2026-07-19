@@ -1,0 +1,126 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="About — Luigi Bifulco"
+  description="Luigi Bifulco, software craftsman e technical architect. Complicare è facile, semplificare è difficile."
+  lang="it"
+  altUrl="/en/about/"
+>
+  <section class="about">
+    <img class="portrait" src="/images/luigi.jpg" alt="Luigi Bifulco" width="480" height="480" />
+    <p class="eyebrow">About</p>
+    <h1>Ciao, sono Luigi.</h1>
+    <p class="lead">
+      Software craftsman, DDD practitioner, agile enthusiast.
+      Full-stack: Java, .NET, Angular, React. Napoli.
+    </p>
+
+    <blockquote class="motto">
+      &ldquo;Complicare è facile,<br />semplificare è difficile.&rdquo;
+    </blockquote>
+
+    <p>
+      È il mio motto, e il filo conduttore di quasi vent'anni di sviluppo
+      software: un approccio metodico e attento, la cura dei dettagli, codice
+      pulito e manutenibile. Oggi sono Software Engineer e Technical Architect
+      in <a href="https://it.linkedin.com/company/infominds-spa">INFOMINDS
+      SpA</a>, dove lavoro a una soluzione cloud costruita sui principi del
+      Domain-Driven Design — con responsabilità che vanno dall'architettura al
+      frontend, e con l'AI integrata metodicamente nel flusso di sviluppo come
+      partner architetturale, non come semplice assistente di scrittura.
+    </p>
+    <p>
+      Prima: firme digitali e certificati in InfoCert, business intelligence in
+      CCH Tagetik e Wolters Kluwer, frontend su larga scala per banking e
+      telco in NTT DATA — e ancora prima il mondo Java, GWT e i primi build
+      tool di cui parlano gli articoli più vecchi di questo blog. Mi sono
+      laureato in Informatica all'Università degli Studi di Salerno.
+    </p>
+    <p>
+      Questo blog è nato anni fa su Kirby CMS ed è risorto in forma statica:
+      markdown, git e niente da mantenere. Come piace a me.
+    </p>
+
+    <ul class="links">
+      <li><a href="https://www.linkedin.com/in/luigibifulco/">LinkedIn</a></li>
+      <li><a href="https://github.com/gigibiffi84">GitHub</a></li>
+      <li><a href="mailto:bifulcoluigi@gmail.com">Email</a></li>
+      <li><a href="/rss.xml">RSS</a></li>
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .about { padding: 5rem 0 2rem; }
+  .portrait {
+    width: 7.5rem;
+    height: 7.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 2rem;
+  }
+  .eyebrow {
+    margin: 0 0 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1 {
+    margin: 0;
+    font-size: clamp(2.5rem, 7vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+  }
+  .lead {
+    margin: 1.5rem 0 0;
+    max-width: 34rem;
+    font-size: 1.35rem;
+    line-height: 1.45;
+    letter-spacing: -0.015em;
+    color: var(--muted);
+  }
+  .motto {
+    margin: 3.5rem 0;
+    padding: 0;
+    border: none;
+    font-size: clamp(1.5rem, 4vw, 2.1rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.25;
+    text-align: center;
+  }
+  .about p:not(.lead):not(.eyebrow) {
+    max-width: 38rem;
+    font-size: 1.06rem;
+    line-height: 1.75;
+  }
+  .links {
+    list-style: none;
+    padding: 0;
+    margin: 3rem 0 0;
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+  .links a {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--fg);
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    padding: 0.45rem 1.1rem;
+    transition: all 0.25s ease;
+  }
+  .links a:hover {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+    text-decoration: none;
+  }
+</style>

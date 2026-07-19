@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import PostList from '../../components/PostList.astro';
+
+const posts = (await getCollection('blog', (p) => p.data.lang === 'en' && !p.data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Base title="Luigi Bifulco — Software Architect" description="Luigi Bifulco's blog: software development, architecture and simplicity." lang="en" altUrl="/">
+  <Hero lang="en" />
+  <PostList posts={posts} lang="en" />
+</Base>

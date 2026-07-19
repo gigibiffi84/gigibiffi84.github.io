@@ -1,0 +1,237 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  lang: 'it' | 'en';
+  /** URL of the same page in the other language, if it exists */
+  altUrl?: string;
+}
+const { title, description = '', lang, altUrl } = Astro.props;
+const otherLang = lang === 'it' ? 'en' : 'it';
+const homeUrl = lang === 'it' ? '/' : '/en/';
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="alternate" type="application/rss+xml" title="Luigi Bifulco — Blog" href="/rss.xml" />
+    {altUrl && <link rel="alternate" hreflang={otherLang} href={altUrl} />}
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a class="site-title" href={homeUrl}>Luigi Bifulco</a>
+        <span class="nav-right">
+          <a class="nav-link" href={lang === 'it' ? '/' : '/en/'}>Blog</a>
+          <a class="nav-link" href={lang === 'it' ? '/about/' : '/en/about/'}>About</a>
+          {altUrl && <a class="lang-pill" href={altUrl}>{otherLang.toUpperCase()}</a>}
+        </span>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <div class="footer-inner">
+        <p class="footer-name">Luigi Bifulco <span>— Software Architect</span></p>
+        <p class="footer-meta">© {new Date().getFullYear()} · <a href="/rss.xml">RSS</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --bg: #fbfbfd;
+    --bg-elev: #ffffff;
+    --fg: #1d1d1f;
+    --muted: #6e6e73;
+    --faint: #86868b;
+    --accent: #0071e3;
+    --border: rgba(0, 0, 0, 0.09);
+    --hairline: rgba(0, 0, 0, 0.12);
+    --code-bg: #f5f5f7;
+    --nav-bg: rgba(251, 251, 253, 0.72);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000;
+      --bg-elev: #161617;
+      --fg: #f5f5f7;
+      --muted: #a1a1a6;
+      --faint: #86868b;
+      --accent: #2997ff;
+      --border: rgba(255, 255, 255, 0.12);
+      --hairline: rgba(255, 255, 255, 0.16);
+      --code-bg: #1d1d1f;
+      --nav-bg: rgba(0, 0, 0, 0.65);
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI',
+      Roboto, 'Helvetica Neue', sans-serif;
+    line-height: 1.65;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--accent); color: #fff; }
+
+  /* ——— nav: translucent, frosted, hairline ——— */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--nav-bg);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  header nav {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .site-title {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    color: var(--fg);
+    transition: opacity 0.25s ease;
+  }
+  .site-title:hover { opacity: 0.65; }
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .nav-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+  .nav-link:hover { color: var(--fg); text-decoration: none; }
+  .lang-pill {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--fg);
+    text-decoration: none;
+    border: 1px solid var(--hairline);
+    border-radius: 999px;
+    padding: 0.25rem 0.8rem;
+    transition: all 0.25s ease;
+  }
+  .lang-pill:hover {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: var(--fg);
+  }
+
+  main {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  h1, h2, h3, h4 {
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+
+  /* ——— article typography ——— */
+  article {
+    font-size: 1.06rem;
+    line-height: 1.75;
+  }
+  article h2, article h3, article h4 {
+    margin-top: 2.75rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.015em;
+  }
+  article h4 { font-size: 1.35rem; }
+  article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+    margin: 1.5rem 0;
+  }
+  article blockquote {
+    margin: 3rem 0;
+    padding: 0;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+    color: var(--fg);
+    text-align: center;
+  }
+  article blockquote p { margin: 0; }
+  article :not(pre) > code {
+    background: var(--code-bg);
+    padding: 0.15em 0.4em;
+    border-radius: 6px;
+    font-size: 0.88em;
+  }
+  article pre {
+    padding: 1.25rem 1.5rem;
+    border-radius: 14px;
+    overflow-x: auto;
+    font-size: 0.86rem;
+    line-height: 1.6;
+    margin: 1.75rem 0;
+  }
+  article ul, article ol { padding-left: 1.4rem; }
+  article li { margin-bottom: 0.35rem; }
+  article hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 3rem 0;
+  }
+
+  /* ——— footer ——— */
+  footer {
+    border-top: 1px solid var(--border);
+  }
+  .footer-inner {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3.5rem;
+  }
+  .footer-name {
+    margin: 0 0 0.2rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    font-size: 0.95rem;
+  }
+  .footer-name span { color: var(--faint); font-weight: 400; }
+  .footer-meta {
+    margin: 0;
+    color: var(--faint);
+    font-size: 0.8rem;
+  }
+  .footer-meta a { color: var(--faint); }
+</style>

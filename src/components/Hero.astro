@@ -1,0 +1,56 @@
+---
+interface Props {
+  lang: 'it' | 'en';
+}
+const { lang } = Astro.props;
+---
+
+<section class="hero">
+  <p class="eyebrow">Software Architect</p>
+  {lang === 'it' ? (
+    <h1>Software.<br />Architettura.<br /><span class="grad">Semplicità.</span></h1>
+  ) : (
+    <h1>Software.<br />Architecture.<br /><span class="grad">Simplicity.</span></h1>
+  )}
+  <p class="tagline">
+    {lang === 'it'
+      ? 'Note di ingegneria del software: linguaggi, piattaforme e le idee che restano.'
+      : 'Notes on software engineering: languages, platforms, and the ideas that last.'}
+  </p>
+</section>
+
+<style>
+  .hero {
+    padding: 5.5rem 0 4.5rem;
+  }
+  .eyebrow {
+    margin: 0 0 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1 {
+    margin: 0;
+    font-size: clamp(2.8rem, 8vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.03;
+  }
+  .grad {
+    background: linear-gradient(90deg, var(--accent), #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .tagline {
+    margin: 1.75rem 0 0;
+    max-width: 32rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: var(--muted);
+  }
+</style>

@@ -1,0 +1,89 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+  lang: 'it' | 'en';
+}
+const { posts, lang } = Astro.props;
+const prefix = lang === 'it' ? '/blog/' : '/en/blog/';
+const fmt = new Intl.DateTimeFormat(lang === 'it' ? 'it-IT' : 'en-US', {
+  year: 'numeric', month: 'long', day: 'numeric',
+});
+---
+
+<ul class="post-list">
+  {posts.map((post) => (
+    <li>
+      <a class="post-row" href={prefix + post.data.translationKey + '/'}>
+        <time datetime={post.data.date.toISOString()}>{fmt.format(post.data.date)}</time>
+        <span class="post-title">{post.data.title}</span>
+        {post.data.description && <span class="post-desc">{post.data.description}</span>}
+        <span class="post-cta" aria-hidden="true">{lang === 'it' ? 'Leggi' : 'Read'} &rsaquo;</span>
+      </a>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .post-list li {
+    border-top: 1px solid var(--border);
+  }
+  .post-list li:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+  .post-row {
+    display: block;
+    padding: 1.9rem 0;
+    text-decoration: none;
+    color: inherit;
+  }
+  .post-row:hover { text-decoration: none; }
+  .post-row time {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-bottom: 0.4rem;
+  }
+  .post-title {
+    display: block;
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    transition: color 0.25s ease;
+  }
+  .post-row:hover .post-title { color: var(--accent); }
+  .post-desc {
+    display: block;
+    margin-top: 0.45rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+  .post-cta {
+    display: inline-block;
+    margin-top: 0.7rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--accent);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .post-row:hover .post-cta {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  @media (hover: none) {
+    .post-cta { opacity: 1; transform: none; }
+  }
+</style>
