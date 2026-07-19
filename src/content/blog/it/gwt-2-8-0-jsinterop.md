@@ -6,7 +6,6 @@ tags: ["javascript", "gwt", "jsinterop"]
 lang: it
 translationKey: "gwt-2-8-0-jsinterop"
 headerImage: "/images/gwt-2-8-0-jsinterop/header.jpg"
-draft: true
 ---
 
 ### GWT 2.8.0 is out
