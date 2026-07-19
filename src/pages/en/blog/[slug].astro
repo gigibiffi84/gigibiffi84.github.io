@@ -4,8 +4,8 @@ import Base from '../../../layouts/Base.astro';
 import ArticleChrome from '../../../components/ArticleChrome.astro';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', (p) => p.data.lang === 'en' && !p.data.hidden);
-  const italian = await getCollection('blog', (p) => p.data.lang === 'it' && !p.data.hidden);
+  const posts = await getCollection('blog', (p) => p.data.lang === 'en' && (import.meta.env.DEV || !p.data.hidden));
+  const italian = await getCollection('blog', (p) => p.data.lang === 'it' && (import.meta.env.DEV || !p.data.hidden));
   return posts.map((post) => ({
     params: { slug: post.data.translationKey },
     props: {
@@ -35,6 +35,7 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', d
       <p class="meta">
         <time datetime={post.data.date.toISOString()}>{fmt.format(post.data.date)}</time>
         {post.data.draft && <span class="draft">draft</span>}
+        {post.data.hidden && <span class="draft">hidden</span>}
       </p>
       <h1>{post.data.title}</h1>
       {post.data.description && <p class="subtitle">{post.data.description}</p>}

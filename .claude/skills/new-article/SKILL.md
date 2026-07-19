@@ -26,7 +26,7 @@ headerImage: "/images/<slug>/header.jpg"
 
 Regole:
 - **date**: data odierna reale, con orario — gli orari servono a ordinare articoli pubblicati lo stesso giorno (il più recente finisce in cima alla home).
-- **hidden: true di default**: l'articolo si pusha ma non esiste sul sito finché Luigi non dice di abilitarlo (si abilita rimuovendo la riga). Se Luigi chiede esplicitamente di pubblicare subito, ometti il flag.
+- **hidden: true di default**: l'articolo si pusha ma non esiste sul sito finché Luigi non dice di abilitarlo (si abilita rimuovendo la riga). Se Luigi chiede esplicitamente di pubblicare subito, ometti il flag. In `npm run dev` gli articoli hidden SONO visibili (con badge "nascosto") per l'anteprima: l'esclusione vale solo per la build di produzione.
 - **tags**: 3-6, minuscoli; per le serie usare il tag comune della serie (es. `pillole` + `reactjsday`). Finiscono anche nei meta `article:tag` per i social.
 - **translationKey**: identico allo slug; la versione inglese (se richiesta) va in `src/content/blog/en/<slug>.md` con lo **stesso** translationKey — lo switch lingua appare da solo.
 - `draft: true` esiste ma è un'altra cosa: pagina raggiungibile ma non listata. Per l'embargo usare `hidden`.

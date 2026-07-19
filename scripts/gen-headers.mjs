@@ -28,6 +28,7 @@ const CARDS = [
   { slug: 'reactjsday-2025-pillole-3-state-management', glyph: '#3 · state', kicker: 'reactjsday 2025 in pillole', h1: 211, h2: 250 },
   { slug: 'reactjsday-2025-pillole-4-modularization', glyph: '#4 · modules', kicker: 'reactjsday 2025 in pillole', h1: 262, h2: 300 },
   { slug: 'reactjsday-2025-pillole-5-react-compiler', glyph: '#5 · compiler', kicker: 'reactjsday 2025 in pillole', h1: 28, h2: 350 },
+  { slug: 'maximum-update-depth-fiber-probe', glyph: '⚠ Maximum update depth exceeded', kicker: 'luigibifulco.it — a caccia del colpevole nei fiber', h1: 0, h2: 25, small: true },
   { slug: 'reactjsday-2025-pillole-6-usetransition', glyph: '#6 · ⏳ transition', kicker: 'reactjsday 2025 in pillole', h1: 175, h2: 145 },
 ];
 
