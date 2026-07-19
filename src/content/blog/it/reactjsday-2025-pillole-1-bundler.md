@@ -4,7 +4,6 @@ description: "Prima pillola dal reactjsday di Verona: reverse engineering di un 
 date: 2026-07-19T10:00:00+02:00
 tags: ["pillole", "reactjsday", "react", "bundler", "tooling"]
 lang: it
-hidden: true
 translationKey: "reactjsday-2025-pillole-1-bundler"
 ---
 
