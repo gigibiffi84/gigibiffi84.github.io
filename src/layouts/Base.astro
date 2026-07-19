@@ -1,14 +1,64 @@
 ---
+import { GOATCOUNTER_CODE, SITE_NAME, DEFAULT_OG_IMAGE } from '../config';
+
 interface Props {
   title: string;
   description?: string;
   lang: 'it' | 'en';
   /** URL of the same page in the other language, if it exists */
   altUrl?: string;
+  /** 'article' for blog posts, 'website' otherwise */
+  ogType?: 'website' | 'article';
+  /** Path (or absolute URL) of the social/preview image */
+  ogImage?: string;
+  publishedTime?: Date;
+  tags?: string[];
 }
-const { title, description = '', lang, altUrl } = Astro.props;
+const {
+  title,
+  description = '',
+  lang,
+  altUrl,
+  ogType = 'website',
+  ogImage,
+  publishedTime,
+  tags = [],
+} = Astro.props;
 const otherLang = lang === 'it' ? 'en' : 'it';
 const homeUrl = lang === 'it' ? '/' : '/en/';
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImageAbs = new URL(ogImage ?? DEFAULT_OG_IMAGE, Astro.site);
+const altUrlAbs = altUrl ? new URL(altUrl, Astro.site) : undefined;
+
+const jsonLd =
+  ogType === 'article'
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: title,
+        description,
+        image: ogImageAbs.href,
+        url: canonical.href,
+        datePublished: publishedTime?.toISOString(),
+        inLanguage: lang === 'it' ? 'it-IT' : 'en-US',
+        keywords: tags.join(', '),
+        author: {
+          '@type': 'Person',
+          name: 'Luigi Bifulco',
+          jobTitle: 'Software Architect',
+          url: new URL(lang === 'it' ? '/about/' : '/en/about/', Astro.site).href,
+        },
+      }
+    : {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: `${SITE_NAME} — Blog`,
+        description,
+        url: Astro.site?.href,
+        inLanguage: lang === 'it' ? 'it-IT' : 'en-US',
+        author: { '@type': 'Person', name: 'Luigi Bifulco', jobTitle: 'Software Architect' },
+      };
 ---
 
 <html lang={lang}>
@@ -17,8 +67,45 @@ const homeUrl = lang === 'it' ? '/' : '/en/';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    <meta name="author" content="Luigi Bifulco" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfbfd" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
+    <link rel="canonical" href={canonical.href} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title="Luigi Bifulco — Blog" href="/rss.xml" />
-    {altUrl && <link rel="alternate" hreflang={otherLang} href={altUrl} />}
+    {altUrlAbs && <link rel="alternate" hreflang={otherLang} href={altUrlAbs.href} />}
+    {altUrlAbs && <link rel="alternate" hreflang={lang} href={canonical.href} />}
+
+    <!-- Open Graph: social previews pick title, description, image and tags automatically -->
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content={lang === 'it' ? 'it_IT' : 'en_US'} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonical.href} />
+    <meta property="og:image" content={ogImageAbs.href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
+    {ogType === 'article' && <meta property="article:author" content="Luigi Bifulco" />}
+    {tags.map((t) => <meta property="article:tag" content={t} />)}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <meta name="twitter:image" content={ogImageAbs.href} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    {GOATCOUNTER_CODE && (
+      <script
+        is:inline
+        data-goatcounter={`https://${GOATCOUNTER_CODE}.goatcounter.com/count`}
+        async
+        src="https://gc.zgo.at/count.js"
+      />
+    )}
   </head>
   <body>
     <header class="site-header">

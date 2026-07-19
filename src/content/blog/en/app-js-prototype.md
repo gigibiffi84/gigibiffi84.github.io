@@ -4,6 +4,7 @@ description: "A first look to App.js framework: prototype needs"
 date: 2015-04-03
 lang: en
 translationKey: "app-js-prototype"
+headerImage: "/images/app-js-prototype/header.jpg"
 ---
 
 I'm looking for a web mobile framework. Native, web and hibryd everyone enable developers to solve one or some problems. I have to say that in the open source world there is no one solution. In this moment i can't find any solution that acts as a toolkit for solving "all common" problems. Probably this need does not exists yet.

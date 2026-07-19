@@ -25,6 +25,10 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', d
   description={post.data.description}
   lang="en"
   altUrl={hasTranslation ? `/blog/${post.data.translationKey}/` : undefined}
+  ogType="article"
+  ogImage={post.data.headerImage}
+  publishedTime={post.data.date}
+  tags={post.data.tags}
 >
   <article>
     <header class="post-header">
@@ -35,7 +39,9 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', d
       <h1>{post.data.title}</h1>
       {post.data.description && <p class="subtitle">{post.data.description}</p>}
     </header>
-    {post.data.headerImage && <img class="header-img" src={post.data.headerImage} alt="" />}
+    {post.data.headerImage && (
+      <img class="header-img" src={post.data.headerImage} alt="" width="1200" height="630" loading="eager" />
+    )}
     <Content />
     {post.data.tags.length > 0 && (
       <p class="tags">{post.data.tags.map((t) => <span>#{t}</span>)}</p>
@@ -82,7 +88,14 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', d
     padding: 0.1rem 0.55rem;
     font-size: 0.7rem;
   }
-  .header-img { margin-top: 0.5rem; }
+  .header-img {
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    max-height: 240px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin: 0.5rem 0 1.5rem;
+  }
   .tags {
     margin-top: 3rem;
     color: var(--faint);
@@ -98,5 +111,10 @@ const fmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', d
   @media (max-width: 600px) {
     .post-header { padding: 2.5rem 0 1rem; }
     .subtitle { font-size: 1.1rem; }
+    .header-img {
+      max-height: 140px;
+      border-radius: 10px;
+      margin-bottom: 1.1rem;
+    }
   }
 </style>

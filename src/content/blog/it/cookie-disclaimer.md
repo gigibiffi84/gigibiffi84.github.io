@@ -5,6 +5,7 @@ date: 2015-06-12
 tags: ["cookie eu law", "cookie", "jquery", "cookiecuttr"]
 lang: it
 translationKey: "cookie-disclaimer"
+headerImage: "/images/cookie-disclaimer/header.jpg"
 ---
 
 Se state cercando un modo semplice e veloce per adeguare il vostro sito alla tanto dibattuta legge sull'informativa dell'utilizzo dei cookie, vi posso consigliare [questa](https://github.com/weare2ndfloor/cookieCuttr) simpatica estensione di jQuery che si preoccupa di estendere la funzione _$_ con il metodo _cookieCuttr()_.

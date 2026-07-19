@@ -5,6 +5,7 @@ date: 2026-07-19
 tags: ["blog", "astro", "markdown", "gwt", "typescript", "react", "angular", "architettura"]
 lang: it
 translationKey: "come-ho-resuscitato-il-mio-blog"
+headerImage: "/images/come-ho-resuscitato-il-mio-blog/header.jpg"
 ---
 
 Se stai leggendo queste righe, il miracolo è riuscito: **questo blog è tornato in vita dopo quasi dieci anni di silenzio**. Stesso dominio, stessi articoli, stesso autore — ma con qualche capello in meno e, spero, qualche idea più chiara.

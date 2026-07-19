@@ -5,6 +5,7 @@ date: 2015-03-21
 tags: ["java", "javascript", "gwt", "typescript", "dart"]
 lang: en
 translationKey: "js-is-dead"
+headerImage: "/images/js-is-dead/header.jpg"
 ---
 
 In my experience of web development i had the opportunity to develop with any kind of projects: small, medium and large. Programming with backend in web development it's nice. **Frontend development for the Web  is full of traps**, specially for "dummies" developers. HTML5 solved many problems but the road it's still hard. The basic programming language provided by all browsers is Javascript. I guess nobody expects this language could become so famous, more people left a bit confusing about the word Java... i agree it should be better they   left the language name to Livescript. Nevermind the name: Javascript will still remain a famous language but it is sure that it is an horrible, confusing and in the same time a powerful programming language. 

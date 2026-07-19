@@ -6,6 +6,7 @@ tags: ["pillole", "reactjsday", "react", "react-compiler", "performance"]
 lang: it
 hidden: true
 translationKey: "reactjsday-2025-pillole-5-react-compiler"
+headerImage: "/images/reactjsday-2025-pillole-5-react-compiler/header.jpg"
 ---
 
 Quinta pillola dal **reactjsday 2025**, e questa è la mia preferita: il **React Compiler**, rilasciato stabile il **7 ottobre 2025**. Confesso: all'inizio sembrava magia anche a me. Poi, da buon pragmatico, ho capito che è qualcosa di meglio della magia: **un nuovo modo di scrivere applicazioni React, con regole precise**.

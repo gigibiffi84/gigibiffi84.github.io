@@ -5,6 +5,7 @@ date: 2015-09-10
 tags: ["package-manager", "chocolatey", "oneget", "windows package manager", "windows"]
 lang: it
 translationKey: "windows-10-one-get"
+headerImage: "/images/windows-10-one-get/header.jpg"
 ---
 
 Dopo l'uscita di Windows10 sarà possibile provare il sistema di CmdLet descritto tempo fa da Garrett Serack in [questo](http://blogs.msdn.com/b/garretts/archive/2014/04/01/my-little-secret-windows-powershell-oneget.aspx) articolo. Il nome del progetto è OneGet ed è  open source, infatti è presente il [progetto](https://github.com/OneGet/oneget) su GitHub e la struttura del repository è ben documentata. 

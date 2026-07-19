@@ -5,6 +5,7 @@ date: 2015-03-21
 tags: ["java", "javascript", "gwt", "typescript", "dart"]
 lang: it
 translationKey: "js-is-dead"
+headerImage: "/images/js-is-dead/header.jpg"
 ---
 
 In questi anni di esperienza ho avuto l'opportunità di sviluppare su diversi progetti: piccoli, medi e grandi. Attualmente sviluppare lato backend è diventato davvero semplice, gli strumenti offerti sono molteplici e permettono di soddisfare gran parte delle esigenze. **Lato frontend nel mondo Web le cose si complicano**, specialmente se non sei un veterano del web. HTML5 viene incontro a molte delle problematiche già ampiamente discusse dalla comunità di sviluppatori, ma la strada, a mio avviso,  è ancora dura da percorrere.

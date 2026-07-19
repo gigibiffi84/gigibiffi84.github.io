@@ -6,6 +6,7 @@ tags: ["pillole", "reactjsday", "react", "state-management", "architettura"]
 lang: it
 hidden: true
 translationKey: "reactjsday-2025-pillole-3-state-management"
+headerImage: "/images/reactjsday-2025-pillole-3-state-management/header.jpg"
 ---
 
 Terza pillola dal **reactjsday 2025**, e siamo su uno dei temi eterni di React: **lo state management**. O meglio: dare a ogni stato lo *scope* che merita.

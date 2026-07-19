@@ -5,6 +5,7 @@ date: 2015-11-24
 tags: ["javascript", "module pattern"]
 lang: it
 translationKey: "javascript-mastering-global-scope"
+headerImage: "/images/javascript-mastering-global-scope/header.jpg"
 ---
 
 ```

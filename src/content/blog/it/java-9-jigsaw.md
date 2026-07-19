@@ -3,6 +3,7 @@ title: "Java 9 e Jigsaw: stato dell'arte"
 date: 2016-01-01
 lang: it
 translationKey: "java-9-jigsaw"
+headerImage: "/images/java-9-jigsaw/header.jpg"
 draft: true
 ---
 

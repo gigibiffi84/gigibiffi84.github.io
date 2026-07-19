@@ -5,6 +5,7 @@ date: 2015-06-12
 tags: ["cookie eu law", "cookie", "jquery", "cookiecuttr"]
 lang: en
 translationKey: "cookie-disclaimer"
+headerImage: "/images/cookie-disclaimer/header.jpg"
 ---
 
 If you are trying to get a simple way to be conformed to the EU Cookie Law i suggest [this](https://github.com/weare2ndfloor/cookieCuttr) library. _CookieCuttr_ enables you to implement opt-in and opt-out policy mechanisms using jQuery. 

@@ -5,6 +5,7 @@ date: 2026-07-19T10:00:00+02:00
 tags: ["pillole", "reactjsday", "react", "bundler", "tooling"]
 lang: it
 translationKey: "reactjsday-2025-pillole-1-bundler"
+headerImage: "/images/reactjsday-2025-pillole-1-bundler/header.jpg"
 ---
 
 Come promesso, partono le **pillole dal reactjsday 2025 di Verona**. Piccola nota di colore prima di cominciare: i miei appunti della conferenza non sono su un quaderno — sono un'app React. Ebbene sì, per un talk su React ho sviluppato le slide **in React**. Ognuna di queste pillole nasce da una di quelle slide.

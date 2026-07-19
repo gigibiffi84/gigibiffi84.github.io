@@ -4,6 +4,7 @@ description: "Impressioni sul framework App.js"
 date: 2015-04-03
 lang: it
 translationKey: "app-js-prototype"
+headerImage: "/images/app-js-prototype/header.jpg"
 ---
 
 In questi giorni sto guardando i diversi framework sviluppati per mobile. Nativi,web, ibridi ognuno a suo modo risolve uno o una serie di problemi. C'é a dire che nell' open source ovviamente non si può avere tutto e subito. **Al momento non esiste nessun _toolkit_  che mette insieme i diversi _framework_**, forse non esiste ancora tale esigenza.

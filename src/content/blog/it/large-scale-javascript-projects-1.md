@@ -5,6 +5,7 @@ date: 2015-11-18
 tags: ["modular design", "javascript", "require.js", "large scale javascript"]
 lang: it
 translationKey: "large-scale-javascript-projects-1"
+headerImage: "/images/large-scale-javascript-projects-1/header.jpg"
 ---
 
 ### Large scale e Modular Design

@@ -5,6 +5,7 @@ date: 2015-03-23
 tags: ["javascript", "node.js", "erlang", "eventmachine", "java"]
 lang: it
 translationKey: "node-js-non-e-javascript"
+headerImage: "/images/node-js-non-e-javascript/header.jpg"
 ---
 
 >In informatica JavaScript è un linguaggio di scripting orientato agli oggetti e agli eventi, comunemente utilizzato nella programmazione Web lato client per la creazione, in siti web e applicazioni web, di effetti dinamici interattivi tramite funzioni di script invocate da eventi innescati a loro volta in vari modi dall'utente sulla pagina web in uso (mouse, tastiera ecc...). [fonte [Wikipedia](http://it.wikipedia.org/wiki/JavaScript)]

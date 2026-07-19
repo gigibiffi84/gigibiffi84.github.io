@@ -5,6 +5,7 @@ date: 2015-05-16
 tags: ["appify", "templating", "gwt", "javascript", "pages", "modules", "tutorial", "examples", "dynamic content loading", "static content loading"]
 lang: en
 translationKey: "appify-page-templating"
+headerImage: "/images/appify-page-templating/header.jpg"
 ---
 
 Appify evolve sempre di più ed è con questo blog che ho intenzione di documentare le capacità di questo framework. Infatti sono felice di comunicarvi che Appify metterà a disposizione un meccanismo di templating delle pagine semplice ed efficace.

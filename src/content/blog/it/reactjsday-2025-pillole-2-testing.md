@@ -6,6 +6,7 @@ tags: ["pillole", "reactjsday", "react", "testing", "playwright", "vitest"]
 lang: it
 hidden: true
 translationKey: "reactjsday-2025-pillole-2-testing"
+headerImage: "/images/reactjsday-2025-pillole-2-testing/header.jpg"
 ---
 
 Seconda pillola dal **reactjsday 2025**: *From Unit to E2E: Crafting a Bulletproof testing pipeline for React Apps*. Titolo ambizioso, contenuti concreti.

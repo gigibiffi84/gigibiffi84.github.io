@@ -6,6 +6,7 @@ tags: ["pillole", "reactjsday", "react", "performance", "hooks"]
 lang: it
 hidden: true
 translationKey: "reactjsday-2025-pillole-6-usetransition"
+headerImage: "/images/reactjsday-2025-pillole-6-usetransition/header.jpg"
 ---
 
 Sesta e ultima pillola dal **reactjsday 2025**: la performance dei form con **`useTransition`**. Nelle mie slide questa era anche una demo live — scrivevi in un campo di ricerca e vedevi la differenza. Il bello di fare le slide in React è anche questo.

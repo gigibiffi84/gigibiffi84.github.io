@@ -5,6 +5,7 @@ date: 2015-03-25
 tags: ["build tools", "ant", "maven", "gradle", "sbt", "ivy", "best build tools", "make", "nant", "nmake", "maven vs gradle"]
 lang: en
 translationKey: "gods-of-build-tools"
+headerImage: "/images/gods-of-build-tools/header.jpg"
 ---
 
 Today, the need of a tool to automate the applications build process is granted in all tehcnologies.

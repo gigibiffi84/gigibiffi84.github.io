@@ -6,6 +6,7 @@ tags: ["pillole", "reactjsday", "react", "architettura", "modularization"]
 lang: it
 hidden: true
 translationKey: "reactjsday-2025-pillole-4-modularization"
+headerImage: "/images/reactjsday-2025-pillole-4-modularization/header.jpg"
 ---
 
 Quarta pillola dal **reactjsday 2025**: il talk di Thoughtworks sulla **modularizzazione delle app React**, raccontata attraverso il case study di una soluzione CMS con app React Native strutturata per scalare a **più di 15 team**. Il talk che, da architetto, mi ha fatto annuire più spesso — anche perché ho ritrovato molte scelte che stiamo già facendo bene, e un paio di dolori che conosco fin troppo.

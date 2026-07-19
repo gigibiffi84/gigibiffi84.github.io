@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://luigibifulco.it/sitemap-index.xml
