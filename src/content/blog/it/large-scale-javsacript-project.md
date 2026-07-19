@@ -4,7 +4,6 @@ date: 2016-01-01
 lang: it
 translationKey: "large-scale-javsacript-project"
 headerImage: "/images/large-scale-javsacript-project/header.jpg"
-draft: true
 ---
 
 ![](/images/large-scale-javsacript-project/appify-project.jpg)

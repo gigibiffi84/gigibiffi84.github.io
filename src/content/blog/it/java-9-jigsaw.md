@@ -1,10 +1,9 @@
 ---
 title: "Java 9 e Jigsaw: stato dell'arte"
-date: 2016-01-01
+date: 2016-12-01
 lang: it
 translationKey: "java-9-jigsaw"
 headerImage: "/images/java-9-jigsaw/header.jpg"
-draft: true
 ---
 
 http://openjdk.java.net/projects/jigsaw/spec/sotms/
