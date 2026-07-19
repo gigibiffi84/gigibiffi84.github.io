@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import ArticleChrome from '../../components/ArticleChrome.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', (p) => p.data.lang === 'it');
@@ -41,6 +42,11 @@ const fmt = new Intl.DateTimeFormat('it-IT', { year: 'numeric', month: 'long', d
     )}
     <p class="back"><a href="/">&lsaquo; Tutti gli articoli</a></p>
   </article>
+  <ArticleChrome
+    title={post.data.title}
+    labelDown="Vai alla fine dell'articolo"
+    labelUp="Torna all'inizio dell'articolo"
+  />
 </Base>
 
 <style>

@@ -21,7 +21,7 @@ const homeUrl = lang === 'it' ? '/' : '/en/';
     {altUrl && <link rel="alternate" hreflang={otherLang} href={altUrl} />}
   </head>
   <body>
-    <header>
+    <header class="site-header">
       <nav>
         <a class="site-title" href={homeUrl}>Luigi Bifulco</a>
         <span class="nav-right">
@@ -80,7 +80,6 @@ const homeUrl = lang === 'it' ? '/' : '/en/';
 
   body {
     margin: 0;
-    overflow-x: hidden;
     background: var(--bg);
     color: var(--fg);
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI',
@@ -94,7 +93,7 @@ const homeUrl = lang === 'it' ? '/' : '/en/';
   ::selection { background: var(--accent); color: #fff; }
 
   /* ——— nav: translucent, frosted, hairline ——— */
-  header {
+  .site-header {
     position: sticky;
     top: 0;
     z-index: 10;
@@ -103,7 +102,7 @@ const homeUrl = lang === 'it' ? '/' : '/en/';
     backdrop-filter: saturate(180%) blur(20px);
     border-bottom: 1px solid var(--border);
   }
-  header nav {
+  .site-header nav {
     max-width: 46rem;
     margin: 0 auto;
     padding: 0.8rem 1.5rem;
@@ -250,7 +249,7 @@ const homeUrl = lang === 'it' ? '/' : '/en/';
   /* ——— mobile ——— */
   @media (max-width: 600px) {
     body { font-size: 16px; }
-    header nav { padding: 0.65rem 1.1rem; }
+    .site-header nav { padding: 0.65rem 1.1rem; }
     .nav-right { gap: 0.9rem; }
     main { padding: 0 1.1rem 4rem; }
     article { font-size: 1rem; }

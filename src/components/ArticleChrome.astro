@@ -1,0 +1,127 @@
+---
+interface Props {
+  title: string;
+  labelDown: string;
+  labelUp: string;
+}
+const { title, labelDown, labelUp } = Astro.props;
+---
+
+<div class="ctxbar" id="ctxbar" aria-hidden="true">
+  <span class="ctxbar-title">{title}</span>
+</div>
+
+<button
+  class="fab"
+  id="fab"
+  data-dir="down"
+  data-label-down={labelDown}
+  data-label-up={labelUp}
+  aria-label={labelDown}
+>
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <polyline points="6 9 12 15 18 9" />
+  </svg>
+</button>
+
+<script>
+  const bar = document.getElementById('ctxbar');
+  const fab = document.getElementById('fab');
+  const header = document.querySelector('.site-header');
+  const postHeader = document.querySelector('.post-header');
+  const article = document.querySelector('article');
+
+  // scroll offset past which the compact title bar appears
+  let barLimit = 0;
+
+  const measure = () => {
+    if (bar && header) bar.style.top = header.offsetHeight + 'px';
+    if (postHeader) barLimit = postHeader.getBoundingClientRect().bottom + scrollY - 70;
+  };
+
+  const onScroll = () => {
+    if (bar) bar.classList.toggle('show', scrollY > barLimit);
+    if (fab) {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      const dir = max > 0 && scrollY > max / 2 ? 'up' : 'down';
+      if (fab.dataset.dir !== dir) {
+        fab.dataset.dir = dir;
+        fab.setAttribute('aria-label', (dir === 'up' ? fab.dataset.labelUp : fab.dataset.labelDown) || '');
+      }
+    }
+  };
+
+  measure();
+  onScroll();
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', () => { measure(); onScroll(); }, { passive: true });
+
+  fab?.addEventListener('click', () => {
+    if (fab.dataset.dir === 'down') {
+      const top = article
+        ? article.getBoundingClientRect().bottom + scrollY - innerHeight + 96
+        : document.documentElement.scrollHeight;
+      scrollTo({ top, behavior: 'smooth' });
+    } else {
+      scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+</script>
+
+<style>
+  .ctxbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 9;
+    background: var(--nav-bg);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 3.5rem;
+    transform: translateY(-110%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+  }
+  .ctxbar.show {
+    transform: none;
+    opacity: 1;
+  }
+  .ctxbar-title {
+    display: block;
+    max-width: 40rem;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--fg);
+  }
+  .fab {
+    position: fixed;
+    right: 1.1rem;
+    bottom: 1.25rem;
+    z-index: 12;
+    width: 2.9rem;
+    height: 2.9rem;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--nav-bg);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    color: var(--fg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+    transition: transform 0.2s ease;
+  }
+  .fab:active { transform: scale(0.92); }
+  .fab svg { transition: transform 0.3s ease; }
+  .fab[data-dir='up'] svg { transform: rotate(180deg); }
+</style>
