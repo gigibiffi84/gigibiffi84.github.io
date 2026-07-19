@@ -4,7 +4,6 @@ description: "Un componente in loop di re-render, uno stack trace inutile e uno 
 date: 2026-07-19T19:00:00+02:00
 tags: ["react", "fiber", "debugging", "hooks", "performance"]
 lang: it
-hidden: true
 translationKey: "maximum-update-depth-fiber-probe"
 headerImage: "/images/maximum-update-depth-fiber-probe/header.jpg"
 ---

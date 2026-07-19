@@ -4,7 +4,6 @@ description: "A component stuck in a re-render loop, a useless stack trace, and 
 date: 2026-07-19T19:00:00+02:00
 tags: ["react", "fiber", "debugging", "hooks", "performance"]
 lang: en
-hidden: true
 translationKey: "maximum-update-depth-fiber-probe"
 headerImage: "/images/maximum-update-depth-fiber-probe/header.jpg"
 ---
