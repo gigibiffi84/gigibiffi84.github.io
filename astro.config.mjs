@@ -1,10 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// NOTA: quando il DNS di luigibifulco.it punterà a GitHub Pages, riporta
-// `site` a 'https://luigibifulco.it' e ricrea public/CNAME con quel dominio.
 export default defineConfig({
-  site: 'https://gigibiffi84.github.io',
+  site: 'https://luigibifulco.it',
   i18n: {
     defaultLocale: 'it',
     locales: ['it', 'en'],
