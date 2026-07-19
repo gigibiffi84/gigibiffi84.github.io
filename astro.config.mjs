@@ -1,10 +1,10 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// NOTA: se pubblichi su GitHub Pages senza dominio custom, cambia `site` in
-// 'https://gigibiffi84.github.io' e aggiungi `base: '/<nome-repo>'`.
+// NOTA: quando il DNS di luigibifulco.it punterà a GitHub Pages, riporta
+// `site` a 'https://luigibifulco.it' e ricrea public/CNAME con quel dominio.
 export default defineConfig({
-  site: 'https://luigibifulco.it',
+  site: 'https://gigibiffi84.github.io',
   i18n: {
     defaultLocale: 'it',
     locales: ['it', 'en'],
