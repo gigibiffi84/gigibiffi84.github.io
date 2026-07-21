@@ -4,7 +4,6 @@ description: "Dalla unit al E2E: come strutturare l'investimento sui test di una
 date: 2026-07-19T10:05:00+02:00
 tags: ["pillole", "reactjsday", "react", "testing", "playwright", "vitest"]
 lang: it
-hidden: true
 translationKey: "reactjsday-2025-pillole-2-testing"
 headerImage: "/images/reactjsday-2025-pillole-2-testing/header.jpg"
 ---
