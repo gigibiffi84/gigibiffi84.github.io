@@ -4,7 +4,6 @@ description: "Local, global e server state: dare a ogni stato lo scope giusto, e
 date: 2026-07-19T10:10:00+02:00
 tags: ["pillole", "reactjsday", "react", "state-management", "architettura"]
 lang: it
-hidden: true
 translationKey: "reactjsday-2025-pillole-3-state-management"
 headerImage: "/images/reactjsday-2025-pillole-3-state-management/header.jpg"
 ---
