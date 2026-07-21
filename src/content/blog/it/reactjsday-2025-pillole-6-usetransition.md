@@ -4,7 +4,6 @@ description: "Ultima pillola da Verona: marcare gli aggiornamenti di stato costo
 date: 2026-07-19T10:25:00+02:00
 tags: ["pillole", "reactjsday", "react", "performance", "hooks"]
 lang: it
-hidden: true
 translationKey: "reactjsday-2025-pillole-6-usetransition"
 headerImage: "/images/reactjsday-2025-pillole-6-usetransition/header.jpg"
 ---

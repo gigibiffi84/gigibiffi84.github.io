@@ -4,7 +4,6 @@ description: "Il React Compiler è stabile e memoizza per te, ma non è magia ne
 date: 2026-07-19T10:20:00+02:00
 tags: ["pillole", "reactjsday", "react", "react-compiler", "performance"]
 lang: it
-hidden: true
 translationKey: "reactjsday-2025-pillole-5-react-compiler"
 headerImage: "/images/reactjsday-2025-pillole-5-react-compiler/header.jpg"
 ---

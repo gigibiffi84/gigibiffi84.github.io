@@ -4,7 +4,6 @@ description: "Il case study Thoughtworks: modularizzazione (che non è code spli
 date: 2026-07-19T10:15:00+02:00
 tags: ["pillole", "reactjsday", "react", "architettura", "modularization"]
 lang: it
-hidden: true
 translationKey: "reactjsday-2025-pillole-4-modularization"
 headerImage: "/images/reactjsday-2025-pillole-4-modularization/header.jpg"
 ---
