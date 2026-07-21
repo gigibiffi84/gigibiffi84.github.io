@@ -4,7 +4,6 @@ description: "Anthropic found a neural hub in Claude — the J-space — reporta
 date: 2026-07-21T09:00:00+02:00
 tags: ["ai", "anthropic", "interpretability", "neuroscience", "claude"]
 lang: en
-hidden: true
 translationKey: "claude-global-workspace-j-space"
 headerImage: "/images/claude-global-workspace-j-space/header.jpg"
 ---
