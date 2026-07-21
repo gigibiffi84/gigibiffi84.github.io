@@ -31,6 +31,7 @@ const CARDS = [
   { slug: 'tanstack-query-dictionary-combine', glyph: 'combine({…keys})', kicker: 'luigibifulco.it — tanstack query patterns', h1: 352, h2: 32, small: true },
   { slug: 'maximum-update-depth-fiber-probe', glyph: '⚠ Maximum update depth exceeded', kicker: 'luigibifulco.it — a caccia del colpevole nei fiber', h1: 0, h2: 25, small: true },
   { slug: 'reactjsday-2025-pillole-6-usetransition', glyph: '#6 · ⏳ transition', kicker: 'reactjsday 2025 in pillole', h1: 175, h2: 145 },
+  { slug: 'claude-global-workspace-j-space', glyph: 'J-space', kicker: 'luigibifulco.it — interpretability research', h1: 260, h2: 200, small: true },
 ];
 
 const html = ({ glyph, kicker, h1, h2, small }) => `<!doctype html>
