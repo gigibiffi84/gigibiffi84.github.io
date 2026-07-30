@@ -32,6 +32,7 @@ const CARDS = [
   { slug: 'maximum-update-depth-fiber-probe', glyph: '⚠ Maximum update depth exceeded', kicker: 'luigibifulco.it — a caccia del colpevole nei fiber', h1: 0, h2: 25, small: true },
   { slug: 'reactjsday-2025-pillole-6-usetransition', glyph: '#6 · ⏳ transition', kicker: 'reactjsday 2025 in pillole', h1: 175, h2: 145 },
   { slug: 'claude-global-workspace-j-space', glyph: 'J-space', kicker: 'luigibifulco.it — interpretability research', h1: 260, h2: 200, small: true },
+  { slug: 'loop-engineering', glyph: 'while (!done)', kicker: 'luigibifulco.it — agentic ai', h1: 150, h2: 190 },
 ];
 
 const html = ({ glyph, kicker, h1, h2, small }) => `<!doctype html>
