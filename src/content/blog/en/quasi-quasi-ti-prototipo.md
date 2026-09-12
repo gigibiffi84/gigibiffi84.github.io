@@ -6,9 +6,10 @@ tags: ["fast prototyping", "app.js", "html5", "geolocation", "application cache"
 lang: en
 translationKey: "quasi-quasi-ti-prototipo"
 headerImage: "/images/quasi-quasi-ti-prototipo/header.jpg"
+hidden: true
 ---
 
-L'altro giorno vi ho [anticipato](/blog/app-js-prototype) che mi sarei cimentato nella creazione di un prototipo utilizzando App.js. Nello specifico il prototipo serve per testare l'affidabilità di due  caratteristiche di HTML5. Le Geolocation API e le Application Cache API. Non entrerò nel dettaglio di queste API, se non sapete cosa sono vi basta sapere che Geolocation permette di ottenere la posizione del dispositivo, mentre Application Cache permette di accedere alla vostra applicazione anche quando il dispositivo è offline. Se non si è ancora capito stiamo parlando di API utilizzabili in un'applicazione web ed essendo, a mio avviso, due caratteristiche molto interessanti per lo sviluppo di applicazioni mobile, vale davvero la pena tenerle sott'occhio.
+L'altro giorno vi ho [anticipato](/en/blog/app-js-prototype/) che mi sarei cimentato nella creazione di un prototipo utilizzando App.js. Nello specifico il prototipo serve per testare l'affidabilità di due  caratteristiche di HTML5. Le Geolocation API e le Application Cache API. Non entrerò nel dettaglio di queste API, se non sapete cosa sono vi basta sapere che Geolocation permette di ottenere la posizione del dispositivo, mentre Application Cache permette di accedere alla vostra applicazione anche quando il dispositivo è offline. Se non si è ancora capito stiamo parlando di API utilizzabili in un'applicazione web ed essendo, a mio avviso, due caratteristiche molto interessanti per lo sviluppo di applicazioni mobile, vale davvero la pena tenerle sott'occhio.
 
 ###### 7 giorni prima....
 Mi chiedono di sviluppare un applicazione mobile web... deve funzionare anche offline e deve accedere alla posizione GPS del dispositivo. Ansia e angoscia devastano la mia mente, ok esistono le API ma quanto sono affidabili? Trovo delle demo in rete, non basta,  non abbassano il mio livello di paranoia. Quanto sono accurate le coordinate? Come gestisco le risorse offline?  E con le risorse esterne come la mettiamo? Mille dubbi mi assalgono. Ok devo sviluppare un prototipo che utilizzi a pieno le API. Porc... devo fare pure la parte grafica!!!

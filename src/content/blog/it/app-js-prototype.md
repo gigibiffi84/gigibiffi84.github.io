@@ -1,6 +1,7 @@
 ---
 title: "App.js prototype"
 description: "Impressioni sul framework App.js"
+tags: ["javascript", "mobile", "framework", "prototipazione"]
 date: 2015-04-03
 lang: it
 translationKey: "app-js-prototype"
