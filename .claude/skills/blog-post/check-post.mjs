@@ -147,13 +147,21 @@ for (const f of files) {
 }
 
 // ——— 3. frontmatter: campi richiesti dallo schema + regole di casa ———
-const REQUIRED = ['title', 'description', 'date', 'tags', 'lang', 'translationKey', 'headerImage'];
+// Senza questi la build fallisce sullo schema Zod.
+const SCHEMA_REQUIRED = ['title', 'date', 'lang', 'translationKey'];
+// Questi hanno un default nello schema: non rompono la build, ma un articolo
+// pubblicato senza description/tags/immagine è monco per SEO e social.
+const HOUSE_REQUIRED = ['description', 'tags', 'headerImage'];
+
 for (const p of parsed) {
-  for (const k of REQUIRED) {
-    if (p.data[k] === undefined) {
-      const why = k === 'headerImage' ? ' (opzionale nello schema, obbligatorio per le regole del blog)' : '';
-      err(`${p.rel}: manca il campo "${k}"${why}`);
-    }
+  for (const k of SCHEMA_REQUIRED) {
+    if (p.data[k] === undefined) err(`${p.rel}: manca il campo "${k}" — la build fallirà sullo schema`);
+  }
+  for (const k of HOUSE_REQUIRED) {
+    if (p.data[k] !== undefined) continue;
+    const what = `${p.rel}: manca il campo "${k}" (default nello schema, ma obbligatorio per le regole del blog)`;
+    // Se l'articolo è hidden non è online: è debito da saldare prima di abilitarlo, non un guasto.
+    p.data.hidden === true ? warn(`${what} — da sistemare prima di togliere hidden`) : err(what);
   }
 
   if (p.data.lang !== p.lang) {
@@ -210,7 +218,10 @@ if (it && en) {
     warn(`date diverse tra IT (${it.data.date}) e EN (${en.data.date}) — le traduzioni di solito condividono la data`);
   }
   if (!!it.data.hidden !== !!en.data.hidden) {
-    err(`hidden disallineato: IT=${!!it.data.hidden}, EN=${!!en.data.hidden} — se una sola versione è generata lo switch lingua sparisce`);
+    // Stato legittimo (una lingua pubblicata, l'altra ancora da tradurre o da
+    // rivedere): non si rompe niente, sparisce solo lo switch lingua. Va però
+    // notato, perché se l'intenzione era pubblicare entrambe è una svista.
+    warn(`hidden disallineato: IT=${!!it.data.hidden}, EN=${!!en.data.hidden} — solo una versione andrà online e lo switch lingua non comparirà; voluto?`);
   }
   if (it.data.headerImage !== en.data.headerImage) {
     warn(`headerImage diverso tra IT e EN — di norma le due versioni condividono la stessa immagine`);
@@ -255,13 +266,15 @@ for (const p of parsed) {
     if (!(targetLang === 'it' ? IT_SLUGS : EN_SLUGS).has(target)) {
       err(`${p.rel}: link "${href}" → nessun articolo "${target}" in ${targetLang}/, è un 404`);
     } else if (targetLang !== p.lang) {
-      // esiste, ma porta il lettore nell'altra lingua
-      const sameLangOk = (p.lang === 'it' ? IT_SLUGS : EN_SLUGS).has(target);
-      err(
-        sameLangOk
-          ? `${p.rel}: link "${href}" manda un lettore ${p.lang} sulla versione ${targetLang} — usa "${good}"`
-          : `${p.rel}: link "${href}" manda un lettore ${p.lang} sulla versione ${targetLang} perché "${target}" non esiste in ${p.lang}/ — traducilo o togli il link`
-      );
+      // Esiste, ma porta il lettore nell'altra lingua. È un errore solo se la
+      // versione nella sua lingua c'era e non è stata usata; se manca, il rimando
+      // all'altra lingua può essere una scelta dell'autore (di solito dichiarata
+      // nel testo, es. "(in Italian)") — lì basta segnalarlo.
+      if ((p.lang === 'it' ? IT_SLUGS : EN_SLUGS).has(target)) {
+        err(`${p.rel}: link "${href}" manda un lettore ${p.lang} sulla versione ${targetLang} — usa "${good}"`);
+      } else {
+        warn(`${p.rel}: link "${href}" manda un lettore ${p.lang} sulla versione ${targetLang}, "${target}" non esiste in ${p.lang}/ — ok se il testo lo dichiara, altrimenti traducilo o togli il link`);
+      }
     } else if (!href.endsWith('/')) {
       warn(`${p.rel}: link "${href}" senza slash finale — usa "${good}"`);
     }

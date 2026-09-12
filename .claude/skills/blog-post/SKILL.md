@@ -63,8 +63,9 @@ hidden: true
   col badge "nascosto", così Luigi può leggerla in anteprima. Si abilita rimuovendo la riga.
 - `draft: true` è un'altra cosa: la pagina esiste ed è raggiungibile, ma non è listata in home e RSS.
   Per l'embargo si usa `hidden`.
-- Se esistono entrambe le lingue, `hidden` deve essere allineato: una sola versione generata fa
-  sparire lo switch lingua.
+- Se esistono entrambe le lingue e `hidden` è disallineato, solo una va online e lo switch lingua non
+  compare. È uno stato legittimo (traduzione non ancora pronta, o versione da rivedere), quindi il
+  checker lo segnala come warning, non come errore: va confermato, non corretto per riflesso.
 
 **Link interni** — il prefisso lingua è un invariante, non un dettaglio:
 
