@@ -47,7 +47,7 @@ Ogni articolo DEVE avere `headerImage`. Se non esiste una foto specifica, genera
    `{ slug: '<slug>', glyph: '<testo breve evocativo>', kicker: 'luigibifulco.it — <contesto>', h1: <hue1>, h2: <hue2> }`
    - glyph: max ~14 caratteri, tipografico a tema (es. `scale()`, `#7 · hooks`, `window.*`); per le serie mantieni il pattern (`#N · parola`).
    - hue: coppia di tinte HSL 0-360 coerenti col tema dell'argomento (verde node, giallo JS, viola architettura...).
-2. Esegui: `export PATH=~/.nvm/versions/node/v20.19.5/bin:$PATH && node scripts/gen-headers.mjs`
+2. Esegui: `export PATH=~/.nvm/versions/node/v24.18.1/bin:$PATH && node scripts/gen-headers.mjs`
    (usa playwright-core + Chrome installato; genera 1200x630 JPEG in `public/images/<slug>/header.jpg`).
 3. L'immagine fa da banner (21:9 contenuto, non invasivo) E da og:image per le card social.
 
@@ -60,7 +60,7 @@ Il layout `Base.astro` genera da solo: canonical, Open Graph completo (`og:image
 
 ## 5. Verifica e pubblicazione
 
-1. `export PATH=~/.nvm/versions/node/v20.19.5/bin:$PATH && npm run build` — deve completare senza errori; se l'articolo è `hidden` NON deve comparire tra le pagine generate.
+1. `export PATH=~/.nvm/versions/node/v24.18.1/bin:$PATH && npm run build` — deve completare senza errori; se l'articolo è `hidden` NON deve comparire tra le pagine generate.
 2. Presenta a Luigi un riepilogo dei contenuti scritti e **chiedi conferma prima di committare/pushare** (l'articolo esce a suo nome).
 3. Al push il deploy è automatico (GitHub Actions → Pages). Se non è hidden, verifica live su https://luigibifulco.it con curl.
 4. Per abilitare un articolo hidden: rimuovi `hidden: true`, build, commit, push, verifica live (pagina 200, presente in home e RSS).

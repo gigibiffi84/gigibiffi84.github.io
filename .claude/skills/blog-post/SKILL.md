@@ -15,7 +15,7 @@ verificarlo prima di pubblicare.
 Prerequisito per ogni comando node/npm in questo repo:
 
 ```
-export PATH=~/.nvm/versions/node/v20.19.5/bin:$PATH
+export PATH=~/.nvm/versions/node/v24.18.1/bin:$PATH
 ```
 
 ## 1. Gli invarianti
@@ -94,7 +94,7 @@ Ogni articolo ne ha una. Se non c'è una foto specifica, si genera in stile tema
      Oltre i ~14 aggiungi `small: true`. Per le serie mantieni il pattern `#N · parola`.
    - `h1`/`h2`: coppia di tinte HSL 0-360 coerenti col tema (verde node, giallo JS, viola
      architettura, rosso errori…).
-2. `export PATH=~/.nvm/versions/node/v20.19.5/bin:$PATH && node scripts/gen-headers.mjs`
+2. `export PATH=~/.nvm/versions/node/v24.18.1/bin:$PATH && node scripts/gen-headers.mjs`
    (playwright-core + Chrome installato; rigenera **tutte** le card, è idempotente).
 3. L'immagine fa da banner nell'articolo (ritagliata 21:9) **e** da `og:image` per le card social —
    per questo deve restare 1200×630.
@@ -104,7 +104,7 @@ Ogni articolo ne ha una. Se non c'è una foto specifica, si genera in stile tema
 Il repo non ha una suite di test. Il controllo degli invarianti è questo script:
 
 ```
-export PATH=~/.nvm/versions/node/v20.19.5/bin:$PATH
+export PATH=~/.nvm/versions/node/v24.18.1/bin:$PATH
 node .claude/skills/blog-post/check-post.mjs <slug>
 ```
 
@@ -130,7 +130,7 @@ qualcosa (`--all --built` funziona allo stesso modo).
 ## 4. Build
 
 ```
-export PATH=~/.nvm/versions/node/v20.19.5/bin:$PATH
+export PATH=~/.nvm/versions/node/v24.18.1/bin:$PATH
 npm run build
 node .claude/skills/blog-post/check-post.mjs <slug> --built
 ```

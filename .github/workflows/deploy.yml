@@ -15,11 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      # node-version non serve: il default di withastro/action@v6 è 24, lo stesso
+      # di .nvmrc — CI e locale buildano sulla stessa major.
       - uses: withastro/action@v6
-        with:
-          # Il default di v6 è già 24, ma lo scriviamo perché diverge da .nvmrc
-          # (Node 20 in locale): qui la CI builda su 24.
-          node-version: 24
 
   deploy:
     needs: build
