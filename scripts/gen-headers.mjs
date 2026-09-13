@@ -33,6 +33,7 @@ const CARDS = [
   { slug: 'reactjsday-2025-pillole-6-usetransition', glyph: '#6 · ⏳ transition', kicker: 'reactjsday 2025 in pillole', h1: 175, h2: 145 },
   { slug: 'claude-global-workspace-j-space', glyph: 'J-space', kicker: 'luigibifulco.it — interpretability research', h1: 260, h2: 200, small: true },
   { slug: 'loop-engineering', glyph: 'while (!done)', kicker: 'luigibifulco.it — agentic ai', h1: 150, h2: 190 },
+  { slug: 'migrare-tanstack-table-v9', glyph: 'v8 → v9', kicker: 'luigibifulco.it — tanstack table', h1: 15, h2: 45 },
 ];
 
 const html = ({ glyph, kicker, h1, h2, small }) => `<!doctype html>
