@@ -68,10 +68,16 @@ const jsonLd =
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
     <meta name="author" content="Luigi Bifulco" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfbfd" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbf8f1" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#14120f" />
     <link rel="canonical" href={canonical.href} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
+    />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title="Luigi Bifulco — Blog" href="/rss.xml" />
     {altUrlAbs && <link rel="alternate" hreflang={otherLang} href={altUrlAbs.href} />}
@@ -131,30 +137,34 @@ const jsonLd =
 </html>
 
 <style is:global>
+  /* Tema "terminale": ambra su carta calda di giorno, su nero caldo di notte. */
   :root {
-    --bg: #fbfbfd;
-    --bg-elev: #ffffff;
-    --fg: #1d1d1f;
-    --muted: #6e6e73;
-    --faint: #86868b;
-    --accent: #0071e3;
-    --border: rgba(0, 0, 0, 0.09);
-    --hairline: rgba(0, 0, 0, 0.12);
-    --code-bg: #f5f5f7;
-    --nav-bg: rgba(251, 251, 253, 0.72);
+    --bg: #fbf8f1;
+    --bg-elev: #f3ede1;
+    --fg: #24201a;
+    --muted: #6b6154;
+    --faint: #8f8474;
+    --accent: #b06a12;
+    --accent-2: #7a6a2f;
+    --border: rgba(36, 32, 26, 0.14);
+    --hairline: rgba(36, 32, 26, 0.22);
+    --code-bg: #f3ede1;
+    --nav-bg: #f3ede1;
+    --radius: 4px;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #000000;
-      --bg-elev: #161617;
-      --fg: #f5f5f7;
-      --muted: #a1a1a6;
-      --faint: #86868b;
-      --accent: #2997ff;
-      --border: rgba(255, 255, 255, 0.12);
-      --hairline: rgba(255, 255, 255, 0.16);
-      --code-bg: #1d1d1f;
-      --nav-bg: rgba(0, 0, 0, 0.65);
+      --bg: #14120f;
+      --bg-elev: #1b1814;
+      --fg: #ece3d4;
+      --muted: #a39784;
+      --faint: #7d7263;
+      --accent: #e8a33d;
+      --accent-2: #a8c07a;
+      --border: rgba(236, 227, 212, 0.14);
+      --hairline: rgba(236, 227, 212, 0.22);
+      --code-bg: #1b1814;
+      --nav-bg: #1b1814;
     }
   }
 
@@ -169,10 +179,10 @@ const jsonLd =
     margin: 0;
     background: var(--bg);
     color: var(--fg);
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI',
-      Roboto, 'Helvetica Neue', sans-serif;
-    line-height: 1.65;
-    font-size: 17px;
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas,
+      'Liberation Mono', monospace;
+    line-height: 1.7;
+    font-size: 16px;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -185,8 +195,6 @@ const jsonLd =
     top: 0;
     z-index: 10;
     background: var(--nav-bg);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
     border-bottom: 1px solid var(--border);
   }
   .site-header nav {
@@ -205,6 +213,7 @@ const jsonLd =
     color: var(--fg);
     transition: opacity 0.25s ease;
   }
+  .site-title::before { content: '~/'; color: var(--faint); }
   .site-title:hover { opacity: 0.65; }
   .nav-right {
     display: flex;
@@ -227,7 +236,7 @@ const jsonLd =
     color: var(--fg);
     text-decoration: none;
     border: 1px solid var(--hairline);
-    border-radius: 999px;
+    border-radius: var(--radius);
     padding: 0.25rem 0.8rem;
     transition: all 0.25s ease;
   }
@@ -247,15 +256,15 @@ const jsonLd =
   a:hover { text-decoration: underline; }
 
   h1, h2, h3, h4 {
-    line-height: 1.15;
-    letter-spacing: -0.02em;
+    line-height: 1.22;
+    letter-spacing: -0.005em;
     font-weight: 700;
   }
 
   /* ——— article typography ——— */
   article {
-    font-size: 1.06rem;
-    line-height: 1.75;
+    font-size: 1rem;
+    line-height: 1.78;
     overflow-wrap: break-word;
   }
   article table {
@@ -267,23 +276,23 @@ const jsonLd =
   article h2, article h3, article h4 {
     margin-top: 2.75rem;
     margin-bottom: 0.75rem;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.005em;
   }
   article h4 { font-size: 1.35rem; }
   article img {
     max-width: 100%;
     height: auto;
-    border-radius: 16px;
+    border-radius: var(--radius);
     margin: 1.5rem 0;
   }
   article blockquote {
     margin: 3rem 0;
     padding: 0;
     border: none;
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1.35;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    line-height: 1.5;
     color: var(--fg);
     text-align: center;
   }
@@ -291,12 +300,12 @@ const jsonLd =
   article :not(pre) > code {
     background: var(--code-bg);
     padding: 0.15em 0.4em;
-    border-radius: 6px;
+    border-radius: 3px;
     font-size: 0.88em;
   }
   article pre {
     padding: 1.25rem 1.5rem;
-    border-radius: 14px;
+    border-radius: var(--radius);
     overflow-x: auto;
     font-size: 0.86rem;
     line-height: 1.6;
@@ -342,14 +351,14 @@ const jsonLd =
     article { font-size: 1rem; }
     article pre {
       padding: 0.9rem 1rem;
-      border-radius: 10px;
+      border-radius: var(--radius);
       font-size: 0.8rem;
     }
     article blockquote {
       font-size: 1.25rem;
       margin: 2.25rem 0;
     }
-    article img { border-radius: 10px; }
+    article img { border-radius: var(--radius); }
     .footer-inner { padding: 2rem 1.1rem 2.75rem; }
   }
 </style>

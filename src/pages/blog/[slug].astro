@@ -62,16 +62,16 @@ const fmt = new Intl.DateTimeFormat('it-IT', { year: 'numeric', month: 'long', d
   }
   .post-header h1 {
     margin: 0;
-    font-size: clamp(2.1rem, 6vw, 3.2rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1.08;
+    font-size: clamp(1.6rem, 4.6vw, 2.3rem);
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    line-height: 1.24;
   }
   .subtitle {
     margin: 1.1rem 0 0;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    letter-spacing: -0.01em;
+    font-size: 1rem;
+    line-height: 1.7;
+    letter-spacing: 0;
     color: var(--muted);
   }
   .meta {
@@ -85,7 +85,7 @@ const fmt = new Intl.DateTimeFormat('it-IT', { year: 'numeric', month: 'long', d
   .draft {
     margin-left: 0.6rem;
     border: 1px solid var(--hairline);
-    border-radius: 999px;
+    border-radius: var(--radius);
     padding: 0.1rem 0.55rem;
     font-size: 0.7rem;
   }
@@ -94,7 +94,7 @@ const fmt = new Intl.DateTimeFormat('it-IT', { year: 'numeric', month: 'long', d
     aspect-ratio: 21 / 9;
     max-height: 240px;
     object-fit: cover;
-    border-radius: 16px;
+    border-radius: var(--radius);
     margin: 0.5rem 0 1.5rem;
   }
   .tags {
@@ -114,7 +114,7 @@ const fmt = new Intl.DateTimeFormat('it-IT', { year: 'numeric', month: 'long', d
     .subtitle { font-size: 1.1rem; }
     .header-img {
       max-height: 140px;
-      border-radius: 10px;
+      border-radius: var(--radius);
       margin-bottom: 1.1rem;
     }
   }

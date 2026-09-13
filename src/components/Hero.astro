@@ -33,13 +33,24 @@ const { lang } = Astro.props;
   }
   h1 {
     margin: 0;
-    font-size: clamp(2.3rem, 11vw, 4.5rem);
-    font-weight: 800;
-    letter-spacing: -0.035em;
-    line-height: 1.03;
+    font-size: clamp(1.9rem, 7.5vw, 3.1rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+  /* caret da terminale dopo l'ultima parola del titolo */
+  h1::after {
+    content: '\2588';
+    margin-left: 0.12em;
+    color: var(--accent);
+    animation: blink 1.15s step-end infinite;
+  }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    h1::after { animation: none; opacity: 0.55; }
   }
   .grad {
-    background: linear-gradient(90deg, var(--accent), #a855f7);
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -48,9 +59,9 @@ const { lang } = Astro.props;
   .tagline {
     margin: 1.75rem 0 0;
     max-width: 32rem;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    letter-spacing: -0.01em;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    letter-spacing: 0;
     color: var(--muted);
   }
   @media (max-width: 600px) {
