@@ -1,15 +1,14 @@
 ---
-name: blog-post
-description: Pipeline completa di un articolo del blog luigibifulco.it (Astro) — invarianti di frontmatter, naming, i18n, immagine di testata, verifica meccanica con check-post.mjs, build, test e deploy su GitHub Pages. Usare quando si crea, si modifica, si verifica, si pubblica o si abilita un articolo, e quando qualcosa nel sito non appare come atteso.
+name: blog-article
+description: Tutto il ciclo di un articolo del blog luigibifulco.it (Astro) — scrittura nella voce di Luigi (articoli e "pillole"), invarianti di frontmatter, naming, i18n, immagine di testata generata, SEO, verifica meccanica con check-post.mjs, build e deploy su GitHub Pages. Usare ogni volta che Luigi chiede di scrivere, creare, modificare, tradurre, verificare, pubblicare o abilitare un articolo o una pillola, e quando qualcosa nel sito non appare come atteso.
 ---
 
-# Articolo del blog: invarianti, build, test, deploy
+# Articolo del blog: scrittura, invarianti, build, test, deploy
 
 Repo `gigibiffi84/gigibiffi84.github.io` → https://luigibifulco.it. Astro 5, content collection
 type-safe, i18n it/en, deploy automatico su GitHub Pages.
 
-Per lo **stile di scrittura** (voce di Luigi, struttura delle pillole) usa la skill `new-article`.
-Questa skill copre tutto il resto: cosa deve essere vero perché un articolo funzioni, e come
+Questa skill copre come si scrive un articolo, cosa deve essere vero perché funzioni, e come
 verificarlo prima di pubblicare.
 
 Prerequisito per ogni comando node/npm in questo repo:
@@ -82,7 +81,22 @@ ne accorge.
 assoluta, `article:tag`, `article:published_time`, Twitter card, JSON-LD `BlogPosting`, hreflang,
 sitemap. Non aggiungere meta tag negli articoli: basta un frontmatter completo.
 
-## 2. Immagine di testata
+## 2. Stile di scrittura (voce di Luigi)
+
+- Prima persona, tono diretto e pragmatico, ironia leggera; opinioni nette in **grassetto**.
+- Titoletti con `####`. Per le pillole: struttura `#### La pillola` → `#### Il takeaway`, chiusura
+  con ponte alla prossima. Lunghezza pillola: 250-450 parole; articolo pieno: libero.
+- Per le serie usa il tag comune della serie (es. `pillole` + `reactjsday`).
+- Codice in fenced block con linguaggio; esempi concreti > teoria.
+- Linka i vecchi articoli del blog quando c'è un aggancio storico (rispettando il prefisso lingua,
+  vedi sopra).
+- Il motto di Luigi ("Complicare è facile, semplificare è difficile") si cita con parsimonia.
+- `date` è la data odierna reale, con orario.
+- Se Luigi chiede esplicitamente di pubblicare subito, ometti `hidden: true`.
+- SEO: `description` con le parole chiave dell'argomento, `title` ≤ ~65 caratteri se possibile
+  (viene troncato nelle SERP).
+
+## 3. Immagine di testata
 
 Ogni articolo ne ha una. Se non c'è una foto specifica, si genera in stile tema:
 
@@ -99,13 +113,13 @@ Ogni articolo ne ha una. Se non c'è una foto specifica, si genera in stile tema
 3. L'immagine fa da banner nell'articolo (ritagliata 21:9) **e** da `og:image` per le card social —
    per questo deve restare 1200×630.
 
-## 3. Test: verifica meccanica degli invarianti
+## 4. Test: verifica meccanica degli invarianti
 
 Il repo non ha una suite di test. Il controllo degli invarianti è questo script:
 
 ```
 export PATH=~/.nvm/versions/node/v24.18.1/bin:$PATH
-node .claude/skills/blog-post/check-post.mjs <slug>
+node .claude/skills/blog-article/check-post.mjs <slug>
 ```
 
 Verifica: forma dello slug; presenza dei file; campi obbligatori; `lang` coerente con la cartella;
@@ -127,12 +141,12 @@ Con `--all` al posto dello slug passa in rassegna tutti gli articoli e stampa so
 qualcosa da segnalare — utile dopo un refactor, o per capire cosa è già rotto prima di toccare
 qualcosa (`--all --built` funziona allo stesso modo).
 
-## 4. Build
+## 5. Build
 
 ```
 export PATH=~/.nvm/versions/node/v24.18.1/bin:$PATH
 npm run build
-node .claude/skills/blog-post/check-post.mjs <slug> --built
+node .claude/skills/blog-article/check-post.mjs <slug> --built
 ```
 
 `npm run build` fallisce se il frontmatter viola lo schema Zod — è il primo test vero. Poi
@@ -144,7 +158,7 @@ Anteprima locale quando serve vedere la resa:
 - `npm run preview` → serve `dist/`, cioè esattamente ciò che andrà online: è il modo per
   verificare che un `hidden` sia davvero invisibile.
 
-## 5. Deploy
+## 6. Deploy
 
 Push su `main` → GitHub Actions (`.github/workflows/deploy.yml`, `withastro/action` +
 `actions/deploy-pages`) builda e pubblica su Pages. Non c'è nessuno step manuale, e non c'è staging:
@@ -167,9 +181,9 @@ indagare.
 → `check-post.mjs <slug> --built` → commit → push → verifica live (pagina 200, presente in home, in
 RSS e nella sitemap).
 
-## 6. Ordine di lavoro consigliato
+## 7. Ordine di lavoro consigliato
 
-1. Scegli lo slug; scrivi IT (e EN se richiesto) con `hidden: true`.
+1. Scegli lo slug; scrivi IT (e EN se richiesto) con `hidden: true`, seguendo lo stile del §2.
 2. Aggiungi la card in `gen-headers.mjs` ed esegui lo script.
 3. `check-post.mjs <slug>` finché è pulito.
 4. `npm run build` + `check-post.mjs <slug> --built`.

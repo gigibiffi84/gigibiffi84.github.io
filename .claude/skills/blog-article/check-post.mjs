@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Verifica meccanica degli invarianti di un articolo del blog.
-// Uso: node .claude/skills/blog-post/check-post.mjs <slug> [--built]
+// Uso: node .claude/skills/blog-article/check-post.mjs <slug> [--built]
 //   --built: verifica anche l'output in dist/ (richiede un `npm run build` appena fatto)
 // Exit code 0 = nessun errore (i warning non fanno fallire).
 import { readFileSync, existsSync, readdirSync, openSync, readSync, closeSync } from 'node:fs';
@@ -11,7 +11,7 @@ const [, , slug, ...flags] = process.argv;
 const CHECK_BUILT = flags.includes('--built');
 
 if (!slug) {
-  console.error('uso: node .claude/skills/blog-post/check-post.mjs <slug|--all> [--built]');
+  console.error('uso: node .claude/skills/blog-article/check-post.mjs <slug|--all> [--built]');
   process.exit(2);
 }
 
